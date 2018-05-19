@@ -1,3 +1,16 @@
+const controler = {
+    playerMoveVertical: 100,
+    playerMoveHorizontal: 80
+};
+
+const startingPoints = {
+    enemyStartX: 0,
+    enemyEndX: 505,
+    firstEnemyY: 60,
+    secondEnemyY: 140,
+    ThirdEnemyY: 220
+};
+
 // Enemies our player must avoid
 var Enemy = function(x, y, movmentSpeed) {
     // Variables applied to each of our instances go here,
@@ -23,8 +36,8 @@ Enemy.prototype.update = function(dt) {
     this.x += this.movmentSpeed * dt;
 
     //to repeat the enemies movments when off screen
-    if(this.x > 505) {
-        this.x = 0;
+    if(this.x > startingPoints.enemyEndX) {
+        this.x = startingPoints.enemyStartX;
     }
 
 };
@@ -59,16 +72,16 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function (pressedKey) {
     switch(pressedKey) {
         case 'left':
-            this.x -= 100;
+            this.x -= controler.playerMoveVertical;
             break;
         case 'right':
-            this.x += 100;
+            this.x += controler.playerMoveVertical;
             break;
         case 'up':
-            this.y -= 80;
+            this.y -= controler.playerMoveHorizontal;
             break;
         case 'down':
-            this.y += 80;
+            this.y += controler.playerMoveHorizontal;
     };
 };
 
@@ -83,12 +96,12 @@ var allEnemies = [];
 var player = new Player(200, 380, 20);
 
 //Enemies vertical position on the screen
-var enemiesPositions = [60, 140, 220];
+var enemiesPositions = [startingPoints.firstEnemyY, startingPoints.secondEnemyY, startingPoints.ThirdEnemyY];
 
 //Loop over the Enemies vertical positions array and
 //call the Enemy Function Expression each time for new position
 enemiesPositions.forEach(function(verticalPos) {
-    var enemy = new Enemy(0, verticalPos, Math.floor(Math.random() * 100));
+    var enemy = new Enemy(startingPoints.enemyStartX, verticalPos, Math.floor(Math.random() * 100));
     allEnemies.push(enemy);
 });
 
