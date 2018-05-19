@@ -37,7 +37,7 @@ var Player = function (x, y, playerSpeed) {
     this.x = x;
     this.y = y;
     this.playerSpeed = playerSpeed;
-    this.sprite = 'images/char-cat-girl';
+    this.sprite = 'images/char-boy.png';
 };
 
 //update the player movments
