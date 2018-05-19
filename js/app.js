@@ -20,7 +20,7 @@ Enemy.prototype.update = function(dt) {
     // all computers.
 
     //to keep the game runs at the same movmentSpeed
-    this.x = this.movmentSpeed * dt;
+    this.x += this.movmentSpeed * dt;
 };
 
 // Draw the enemy on the screen, required method for game
