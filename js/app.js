@@ -38,6 +38,8 @@ Enemy.prototype.update = function(dt) {
     //to repeat the enemies movments when off screen
     if(this.x > startingPoints.enemyEndX) {
         this.x = startingPoints.enemyStartX;
+
+        this.movmentSpeed = Math.floor(50 + (Math.random() * 200));
     }
 
 };
@@ -101,7 +103,7 @@ var enemiesPositions = [startingPoints.firstEnemyY, startingPoints.secondEnemyY,
 //Loop over the Enemies vertical positions array and
 //call the Enemy Function Expression each time for new position
 enemiesPositions.forEach(function(verticalPos) {
-    var enemy = new Enemy(startingPoints.enemyStartX, verticalPos, Math.floor(Math.random() * 100));
+    var enemy = new Enemy(startingPoints.enemyStartX, verticalPos, 50 + (Math.floor(Math.random() * 200)));
     allEnemies.push(enemy);
 });
 
