@@ -8,7 +8,9 @@ const startingPoints = {
     enemyEndX: 505,
     firstEnemyY: 60,
     secondEnemyY: 140,
-    ThirdEnemyY: 220
+    ThirdEnemyY: 220,
+    playerVerticalPos: 200,
+    playerHoriyontalPos: 380
 };
 
 // Enemies our player must avoid
@@ -64,6 +66,18 @@ var Player = function (x, y, playerSpeed) {
 //update the player movments
 Player.prototype.update = function() {
 
+    // reset player position on off-screen
+    if(this.x < 0 || this.x >= 500 || this.y > startingPoints.playerHoriyontalPos) {
+        this.x = startingPoints.playerVerticalPos;
+        this.y = startingPoints.playerHoriyontalPos;
+    }
+
+    //reset the game one player tuched the water
+    if(this.y < 0) {
+        this.x = startingPoints.playerVerticalPos;
+        this.y = startingPoints.playerHoriyontalPos;
+    }
+
 };
 
 // Draw the player on the screen
@@ -95,7 +109,7 @@ Player.prototype.handleInput = function (pressedKey) {
 //allEnemies array to add new anameies on screes
 var allEnemies = [];
 //calling Player Function Expression
-var player = new Player(200, 380, 20);
+var player = new Player(startingPoints.playerVerticalPos, startingPoints.playerHoriyontalPos, 20);
 
 //Enemies vertical position on the screen
 var enemiesPositions = [startingPoints.firstEnemyY, startingPoints.secondEnemyY, startingPoints.ThirdEnemyY];
