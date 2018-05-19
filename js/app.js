@@ -32,6 +32,7 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
+//player function Expression
 var Player = function (x, y, playerSpeed) {
     this.x = x;
     this.y = y;
@@ -39,10 +40,12 @@ var Player = function (x, y, playerSpeed) {
     this.sprite = 'images/char-cat-girl';
 };
 
+//update the player movments
 Player.prototype.update = function() {
 
 };
 
+// Draw the player on the screen
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -51,6 +54,11 @@ Player.prototype.render = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+
+//allEnemies array to add new anameies on screes
+var allEnemies = [];
+
+var player = new Player(50, 20, 20);
 
 
 
