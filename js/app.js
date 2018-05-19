@@ -61,7 +61,7 @@ var allEnemies = [];
 var player = new Player(200, 400, 20);
 
 //Enemies vertical position on the screen
-var enemiesPositions = [20, 80, 120];
+var enemiesPositions = [60, 140, 220];
 
 //Loop over the Enemies vertical positions array and
 //call the Enemy Function Expression each time for new position
