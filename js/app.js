@@ -43,6 +43,11 @@ Enemy.prototype.update = function(dt) {
 
         this.movmentSpeed = Math.floor(50 + (Math.random() * 200));
     }
+    //set the collusion
+    if(player.x < this.x + 60 && player.x + 37 > this.x && player.y < this.y + 25 && 30 + player.y > this.y) {
+        player.x = startingPoints.playerVerticalPos;
+        player.y = startingPoints.playerHoriyontalPos;
+    }
 
 };
 
