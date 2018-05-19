@@ -58,7 +58,7 @@ Player.prototype.render = function() {
 //allEnemies array to add new anameies on screes
 var allEnemies = [];
 
-var player = new Player(50, 20, 20);
+var player = new Player(200, 400, 20);
 
 
 
