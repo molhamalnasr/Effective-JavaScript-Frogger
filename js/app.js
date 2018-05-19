@@ -4,7 +4,7 @@ const controler = {
 };
 
 const startingPoints = {
-    enemyStartX: 0,
+    enemyStartX: -100,
     enemyEndX: 505,
     firstEnemyY: 60,
     secondEnemyY: 140,
