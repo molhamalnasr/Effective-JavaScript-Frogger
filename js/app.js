@@ -57,8 +57,18 @@ Player.prototype.render = function() {
 
 //allEnemies array to add new anameies on screes
 var allEnemies = [];
-
+//calling Player Function Expression
 var player = new Player(200, 400, 20);
+
+//Enemies vertical position on the screen
+var enemiesPositions = [20, 80, 120];
+
+//Loop over the Enemies vertical positions array and
+//call the Enemy Function Expression each time for new position
+enemiesPositions.forEach(function(verticalPos) {
+    var enemy = new Enemy(0, verticalPos, Math.floor(Math.random() * 100));
+    allEnemies.push(enemy);
+});
 
 
 
