@@ -21,6 +21,12 @@ Enemy.prototype.update = function(dt) {
 
     //to keep the game runs at the same movmentSpeed
     this.x += this.movmentSpeed * dt;
+
+    //to repeat the enemies movments when off screen
+    if(this.x > 505) {
+        this.x = 0;
+    }
+
 };
 
 // Draw the enemy on the screen, required method for game
