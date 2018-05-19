@@ -59,10 +59,10 @@ Player.prototype.handleInput = function (pressedKey) {
             this.x += 100;
             break;
         case 'up':
-            this.y -= 90;
+            this.y -= 80;
             break;
         case 'down':
-            this.y += 90;
+            this.y += 80;
     };
 };
 
@@ -74,7 +74,7 @@ Player.prototype.handleInput = function (pressedKey) {
 //allEnemies array to add new anameies on screes
 var allEnemies = [];
 //calling Player Function Expression
-var player = new Player(200, 400, 20);
+var player = new Player(200, 380, 20);
 
 //Enemies vertical position on the screen
 var enemiesPositions = [60, 140, 220];
