@@ -1,7 +1,8 @@
 const controler = {
     playerMoveVertical: 100,
     playerMoveHorizontal: 80,
-    lives: 3
+    lives: 3,
+    rounds: 0
 };
 
 const startingPoints = {
@@ -49,6 +50,9 @@ Enemy.prototype.update = function(dt) {
         player.x = startingPoints.playerVerticalPos;
         player.y = startingPoints.playerHoriyontalPos;
 
+        //reset the rounds
+        controler.rounds = 0;
+
         //reduce player lives
         if(controler.lives != 0) {
             document.getElementById('heart-' + controler.lives).children[1].style.display = 'none';
@@ -83,6 +87,9 @@ Player.prototype.update = function() {
         this.x = startingPoints.playerVerticalPos;
         this.y = startingPoints.playerHoriyontalPos;
 
+        //reset the rounds
+        controler.rounds = 0;
+
         //reduce player lives
         if(controler.lives != 0) {
             document.getElementById('heart-' + controler.lives).children[1].style.display = 'none';
@@ -94,7 +101,13 @@ Player.prototype.update = function() {
     if(this.y < 0) {
         this.x = startingPoints.playerVerticalPos;
         this.y = startingPoints.playerHoriyontalPos;
+
+        //increase the rounds number
+        controler.rounds++;
     }
+
+    //Update the rounds number
+    document.querySelector('.rounds').textContent = controler.rounds;
 
 };
 
