@@ -103,6 +103,7 @@ Player.prototype.update = function() {
         }
     }
 
+    //display game over div
     if(controler.lives == 0) {
         document.querySelector('.gameStatus').style.display = 'block';
     }
@@ -119,6 +120,7 @@ Player.prototype.update = function() {
     //Update the rounds number
     document.querySelector('.rounds').textContent = controler.rounds;
 
+    //manipulate the Summary
     const text = controler.rounds == 1 ? 'round' : 'rounds';
     document.querySelector('.summary').textContent = `${controler.rounds} ${text}`;
 
