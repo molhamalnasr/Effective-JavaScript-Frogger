@@ -51,7 +51,10 @@ Enemy.prototype.update = function(dt) {
         player.y = startingPoints.playerHoriyontalPos;
 
         //reset the rounds
-        controler.rounds = 0;
+        //and save the rounds in the last live
+        if(controler.lives != 1){
+            controler.rounds = 0;
+        }
 
         //reduce player lives
         if(controler.lives != 0) {
@@ -88,13 +91,20 @@ Player.prototype.update = function() {
         this.y = startingPoints.playerHoriyontalPos;
 
         //reset the rounds
-        controler.rounds = 0;
+        //and save the rounds in the last live
+        if(controler.lives != 1){
+            controler.rounds = 0;
+        }
 
         //reduce player lives
         if(controler.lives != 0) {
             document.getElementById('heart-' + controler.lives).children[1].style.display = 'none';
             controler.lives--;
         }
+    }
+
+    if(controler.lives == 0) {
+        document.querySelector('.gameStatus').style.display = 'block';
     }
 
     //reset the game one player tuched the water
@@ -108,6 +118,9 @@ Player.prototype.update = function() {
 
     //Update the rounds number
     document.querySelector('.rounds').textContent = controler.rounds;
+
+    const text = controler.rounds == 1 ? 'round' : 'rounds';
+    document.querySelector('.summary').textContent = `${controler.rounds} ${text}`;
 
 };
 
@@ -153,6 +166,10 @@ enemiesPositions.forEach(function(verticalPos) {
 });
 
 
+//restart the game
+document.querySelector('.resetGame').addEventListener('click', function() {
+    location.reload();
+});
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
