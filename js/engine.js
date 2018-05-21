@@ -79,7 +79,30 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
+    }
+
+
+    function checkCollisions() {
+        allEnemies.forEach(function(enemy){
+            if(player.x < enemy.x + 60 && player.x + 37 > enemy.x && player.y < enemy.y + 25 && 30 + player.y > enemy.y) {
+                player.x = startingPoints.playerVerticalPos;
+                player.y = startingPoints.playerHorisontalPos;
+
+                //reset the rounds
+                //and save the rounds in the last live
+                if(controler.lives != 1 && controler.rounds != 0){
+                    controler.rounds--;
+                }
+
+                //reduce player lives
+                if(controler.lives != 0) {
+                    document.getElementById('heart-' + controler.lives).children[1].style.display = 'none';
+                    controler.lives--;
+                }
+            }
+        });
+
     }
 
     /* This is called by the update function and loops through all of the

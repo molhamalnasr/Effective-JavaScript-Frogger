@@ -12,8 +12,10 @@ const startingPoints = {
     secondEnemyY: 140,
     ThirdEnemyY: 220,
     playerVerticalPos: 200,
-    playerHoriyontalPos: 380
+    playerHorisontalPos: 380
 };
+
+var gameStatus = document.querySelector('.gameStatus').style;
 
 // Enemies our player must avoid
 var Enemy = function(x, y, movmentSpeed) {
@@ -39,28 +41,11 @@ Enemy.prototype.update = function(dt) {
     //to keep the game runs at the same movmentSpeed
     this.x += this.movmentSpeed * dt;
 
-    //to repeat the enemies movments when off screen
+    //to repeat the enemies movements when off screen
     if(this.x > startingPoints.enemyEndX) {
         this.x = startingPoints.enemyStartX;
 
         this.movmentSpeed = Math.floor(50 + (Math.random() * 200));
-    }
-    //set the collusion
-    if(player.x < this.x + 60 && player.x + 37 > this.x && player.y < this.y + 25 && 30 + player.y > this.y) {
-        player.x = startingPoints.playerVerticalPos;
-        player.y = startingPoints.playerHoriyontalPos;
-
-        //reset the rounds
-        //and save the rounds in the last live
-        if(controler.lives != 1 && controler.rounds != 0){
-            controler.rounds--;
-        }
-
-        //reduce player lives
-        if(controler.lives != 0) {
-            document.getElementById('heart-' + controler.lives).children[1].style.display = 'none';
-            controler.lives--;
-        }
     }
 
 };
@@ -86,9 +71,9 @@ var Player = function (x, y, playerSpeed) {
 Player.prototype.update = function() {
 
     // reset player position on off-screen
-    if(this.x < 0 || this.x >= 500 || this.y > startingPoints.playerHoriyontalPos) {
+    if(this.x < 0 || this.x >= 500 || this.y > startingPoints.playerHorisontalPos) {
         this.x = startingPoints.playerVerticalPos;
-        this.y = startingPoints.playerHoriyontalPos;
+        this.y = startingPoints.playerHorisontalPos;
 
         //reset the rounds
         //and save the rounds in the last live
@@ -105,13 +90,13 @@ Player.prototype.update = function() {
 
     //display game over div
     if(controler.lives == 0) {
-        document.querySelector('.gameStatus').style.display = 'block';
+        gameStatus.display = 'block';
     }
 
     //reset the game one player tuched the water
     if(this.y < 0) {
         this.x = startingPoints.playerVerticalPos;
-        this.y = startingPoints.playerHoriyontalPos;
+        this.y = startingPoints.playerHorisontalPos;
 
         //increase the rounds number
         controler.rounds++;
@@ -155,7 +140,7 @@ Player.prototype.handleInput = function (pressedKey) {
 //allEnemies array to add new anameies on screes
 var allEnemies = [];
 //calling Player Function Expression
-var player = new Player(startingPoints.playerVerticalPos, startingPoints.playerHoriyontalPos, 20);
+var player = new Player(startingPoints.playerVerticalPos, startingPoints.playerHorisontalPos, 20);
 
 //Enemies vertical position on the screen
 var enemiesPositions = [startingPoints.firstEnemyY, startingPoints.secondEnemyY, startingPoints.ThirdEnemyY];
