@@ -52,8 +52,8 @@ Enemy.prototype.update = function(dt) {
 
         //reset the rounds
         //and save the rounds in the last live
-        if(controler.lives != 1){
-            controler.rounds = 0;
+        if(controler.lives != 1 && controler.rounds != 0){
+            controler.rounds--;
         }
 
         //reduce player lives
@@ -92,8 +92,8 @@ Player.prototype.update = function() {
 
         //reset the rounds
         //and save the rounds in the last live
-        if(controler.lives != 1){
-            controler.rounds = 0;
+        if(controler.lives != 1 && controler.rounds != 0){
+            controler.rounds--;
         }
 
         //reduce player lives
