@@ -1,6 +1,7 @@
 const controler = {
     playerMoveVertical: 100,
-    playerMoveHorizontal: 80
+    playerMoveHorizontal: 80,
+    lives: 3
 };
 
 const startingPoints = {
@@ -47,6 +48,12 @@ Enemy.prototype.update = function(dt) {
     if(player.x < this.x + 60 && player.x + 37 > this.x && player.y < this.y + 25 && 30 + player.y > this.y) {
         player.x = startingPoints.playerVerticalPos;
         player.y = startingPoints.playerHoriyontalPos;
+
+        //reduce player lives
+        if(controler.lives != 0) {
+            document.getElementById('heart-' + controler.lives).children[1].style.display = 'none';
+            controler.lives--;
+        }
     }
 
 };
@@ -75,6 +82,12 @@ Player.prototype.update = function() {
     if(this.x < 0 || this.x >= 500 || this.y > startingPoints.playerHoriyontalPos) {
         this.x = startingPoints.playerVerticalPos;
         this.y = startingPoints.playerHoriyontalPos;
+
+        //reduce player lives
+        if(controler.lives != 0) {
+            document.getElementById('heart-' + controler.lives).children[1].style.display = 'none';
+            controler.lives--;
+        }
     }
 
     //reset the game one player tuched the water
